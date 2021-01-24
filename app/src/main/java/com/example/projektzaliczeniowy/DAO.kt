@@ -13,7 +13,10 @@ interface UserDao {
 
     @Query("SELECT * FROM contact WHERE first_name LIKE :first AND " +
             "last_name LIKE :last LIMIT 1")
-    fun findByName(first: String, last: String): Contact
+    fun findByName(first: String, last: String): Contact?
+
+    @Query("SELECT * FROM contact WHERE number LIKE :number")
+    fun findByNumber(number: Int) : Contact?
 
     @Insert
     fun insertAll(vararg contacts: Contact)

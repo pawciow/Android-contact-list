@@ -21,4 +21,15 @@ class Repository (private val contactDao: UserDao){
         contactDao.update(contact)
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun findByName(first: String, last : String) :Contact? {
+        return contactDao.findByName(first, last)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun findByNumber(number: Int) :Contact? {
+        return contactDao.findByNumber(number)
+    }
 }

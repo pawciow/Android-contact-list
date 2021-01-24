@@ -5,4 +5,7 @@
     <string name="hint_word_last_name">Nazwisko</string>
     <string name="hint_word_number">Numer</string>
     <string name="button_add">Dodaj kontakt</string>
+    <string name="button_find_by_name">Szukaj po imieniu i nazwisku</string>
+    <string name="button_find_by_number">Szukaj po numerze</string>
+    <string name="button_edit">Edytuj kontakt</string>
 </resources>

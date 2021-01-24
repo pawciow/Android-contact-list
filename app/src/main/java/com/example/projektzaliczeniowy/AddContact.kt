@@ -26,20 +26,22 @@ class AddContact : AppCompatActivity() {
         button.setOnClickListener {
             if(TextUtils.isEmpty(first_name_edittext.text)
                 || TextUtils.isEmpty(last_name_edittext.text )
-                || TextUtils.isEmpty(number_edittext.text))
+                || TextUtils.isEmpty(number_edittext.text)){
                 Toast.makeText(this,
                     "Wypełnij proszę wszystkie pola", Toast.LENGTH_LONG).show()
-            finish()
+                finish()
+            }
+
 
             val firstName = first_name_edittext.text.toString()
             val lastName = last_name_edittext.text.toString()
             val number = number_edittext.text.toString()
 
             val reply = Intent()
-            setResult(Activity.RESULT_OK)
+            setResult(Activity.RESULT_OK, reply)
             reply.putExtra("FIRST_NAME", firstName)
             reply.putExtra("LAST_NAME", lastName)
-            reply.putExtra("number", number)
+            reply.putExtra("NUMBER", number)
 
             finish()
         }

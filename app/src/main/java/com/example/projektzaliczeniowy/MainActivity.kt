@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlin.concurrent.thread
@@ -34,6 +36,18 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
+        val findButton = findViewById<FloatingActionButton>(R.id.fab_find)
+        val addButton = findViewById<FloatingActionButton>(R.id.fab_add)
+
+        addButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, AddContact::class.java)
+            startActivityForResult(intent, ACTIVITY_CODES.AddContactActivityCode)
+        }
+
+        findButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, FindAndReplaceActivity::class.java)
+            startActivityForResult(intent, ACTIVITY_CODES.FindContactActivityCode)
+        }
 
         contactsViewModel.allContacts.observe(this){ contacts ->
             contacts.let { adapter.submitList(it) }
@@ -44,16 +58,17 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == ACTIVITY_CODES.AddContactActivityCode && resultCode == Activity.RESULT_OK){
+        if(requestCode == ACTIVITY_CODES.AddContactActivityCode &&  resultCode == Activity.RESULT_OK){
             val name = data?.getStringExtra("FIRST_NAME")
-            val last_name = data?.getStringExtra("LAST_NAME")
+            val lastName = data?.getStringExtra("LAST_NAME")
             val number = Integer.parseInt(data?.getStringExtra("NUMBER"))
-            val toAdd = Contact(firstName = name, lastName = last_name, number = number)
+            val toAdd = Contact(firstName = name, lastName = lastName, number = number)
             contactsViewModel.insert(toAdd)
         }
     }
 
     companion object ACTIVITY_CODES{
+        public  val FindContactActivityCode = 1
         public  val AddContactActivityCode = 2
     }
 }
