@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProjektZaliczeniowy</string>
+    <string name="button_save">Zapisz kontakt</string>
+    <string name="hint_word_first_name">Imie</string>
+    <string name="hint_word_last_name">Nazwisko</string>
+    <string name="hint_word_number">Numer</string>
+</resources>
