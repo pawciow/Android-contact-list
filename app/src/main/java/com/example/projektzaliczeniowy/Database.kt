@@ -28,6 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
                         "contact_database"
                 )
                     .addCallback(ContactDatabaseCallback(scope))
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 // return instance

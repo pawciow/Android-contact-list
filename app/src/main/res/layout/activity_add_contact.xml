@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/edit_first_name"
+        android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -14,7 +14,7 @@
         android:layout_margin="16dp"
         android:textSize="18sp" />
     <EditText
-        android:id="@+id/edit_last_name"
+        android:id="@+id/last_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -23,7 +23,7 @@
         android:layout_margin="16dp"
         android:textSize="18sp" />
     <EditText
-        android:id="@+id/edit_number"
+        android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -34,11 +34,11 @@
 
 
     <Button
-        android:id="@+id/button_edit"
+        android:id="@+id/button_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_200"
-        android:text="@string/button_save"
+        android:text="@string/button_add"
         android:layout_margin="16dp"
         android:textColor="@color/black" />
 

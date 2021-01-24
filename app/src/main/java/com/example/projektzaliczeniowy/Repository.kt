@@ -14,4 +14,11 @@ class Repository (private val contactDao: UserDao){
     suspend fun insert(contact: Contact) {
         contactDao.insertAll(contact)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun update(contact: Contact) {
+        contactDao.update(contact)
+    }
+
 }

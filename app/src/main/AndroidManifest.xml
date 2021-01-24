@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjektZaliczeniowy">
-        <activity android:name=".EditContact"></activity>
+        <activity android:name=".AddContact"></activity>
+        <activity android:name=".EditContact" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

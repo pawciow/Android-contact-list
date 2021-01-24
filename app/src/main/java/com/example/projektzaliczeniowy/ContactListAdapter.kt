@@ -1,5 +1,7 @@
 package com.example.projektzaliczeniowy
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 
 class ContactListAdapter : androidx.recyclerview.widget.ListAdapter<Contact, ContactListAdapter.ContactViewHolder>(ContactsComparator()) {
+    lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ContactViewHolder{
         return ContactViewHolder.create(parent)
@@ -17,7 +21,15 @@ class ContactListAdapter : androidx.recyclerview.widget.ListAdapter<Contact, Con
         val current = getItem(position)
         holder.bind(current.firstName)
         holder.itemView.setOnClickListener {
-            print("Clicked on this!" + current.firstName + current.lastName + current.number )
+            mContext = it.context
+            mContext = mContext as MainActivity
+            val newIntent = Intent(mContext, EditContact::class.java)
+            newIntent.putExtra("FIRST_NAME", current.firstName)
+            newIntent.putExtra("LAST_NAME", current.lastName)
+            newIntent.putExtra("NUMBER", current.number)
+            newIntent.putExtra("ID", current.uid)
+
+            it.context.startActivity(newIntent)
         }
     }
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,6 +56,9 @@ class ContactListAdapter : androidx.recyclerview.widget.ListAdapter<Contact, Con
                     && oldItem.lastName == newItem.lastName
                     && oldItem.number == newItem.number
         }
+    }
+    companion object {
+        const val EDIT_CONTACT = "EDIT_CONTACT"
     }
 
 

@@ -10,6 +10,10 @@ class ContactViewModel(private val repository: Repository) : ViewModel() {
         repository.insert(contact)
     }
 
+    fun update(contact: Contact) = viewModelScope.launch {
+        repository.update(contact)
+    }
+
     class ContactViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {
