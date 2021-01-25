@@ -40,6 +40,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="end|bottom"
                 android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/purple_200"
+
                 android:src="@drawable/ic_baseline_find_replace_24"
 
                 />
@@ -53,6 +55,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="end|bottom"
                 android:layout_marginBottom="25dp"
+                android:backgroundTint="@color/purple_200"
                 android:src="@android:drawable/ic_input_add" />
 
         </RelativeLayout>

@@ -43,13 +43,13 @@ class EditContact : AppCompatActivity() {
         button.setOnClickListener {
             if(TextUtils.isEmpty(first_name_edittext.text)
                 || TextUtils.isEmpty(last_name_edittext.text)
-                || TextUtils.isEmpty(number_edittext.text))
-                    Toast.makeText(
+                || TextUtils.isEmpty(number_edittext.text)) {
+                Toast.makeText(
                         this,
                         "Wypełnij proszę wszystkie pola", Toast.LENGTH_LONG
-                    ).show()
-                    finish()
-
+                ).show()
+                return@setOnClickListener
+            }
             val firstName = first_name_edittext.text.toString()
             val lastName = last_name_edittext.text.toString()
             val number = Integer.parseInt(number_edittext.text.toString())

@@ -19,7 +19,9 @@ class ContactListAdapter : androidx.recyclerview.widget.ListAdapter<Contact, Con
     }
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.firstName)
+        holder.bindName(current.firstName)
+        holder.bindSurname(current.lastName)
+        holder.bindNumber(current.number)
         holder.itemView.setOnClickListener {
             mContext = it.context
             mContext = mContext as MainActivity
@@ -33,9 +35,17 @@ class ContactListAdapter : androidx.recyclerview.widget.ListAdapter<Contact, Con
         }
     }
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private  val contactItemView: TextView = itemView.findViewById(R.id.textView)
-        fun bind(text: String?){
-            contactItemView.text = text
+        private  val firstNameItemView: TextView = itemView.findViewById(R.id.textView)
+        private  val lastNameItemView: TextView = itemView.findViewById(R.id.lastNameView)
+        private  val numberItemView: TextView = itemView.findViewById(R.id.numberView)
+        fun bindName(text: String?){
+            firstNameItemView.text = text
+        }
+        fun bindSurname(text: String?){
+            lastNameItemView.text = text
+        }
+        fun bindNumber(int: Int?){
+            numberItemView.text = int.toString()
         }
         companion object{
             fun create(parent: ViewGroup) : ContactViewHolder {

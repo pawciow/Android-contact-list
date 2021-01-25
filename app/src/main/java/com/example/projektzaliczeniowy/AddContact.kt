@@ -29,7 +29,7 @@ class AddContact : AppCompatActivity() {
                 || TextUtils.isEmpty(number_edittext.text)){
                 Toast.makeText(this,
                     "Wypełnij proszę wszystkie pola", Toast.LENGTH_LONG).show()
-                finish()
+                return@setOnClickListener
             }
 
 
